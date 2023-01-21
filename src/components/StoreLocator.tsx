@@ -104,7 +104,7 @@ const StoreLocator = (): JSX.Element => {
         <div className=" flex flex-col">
           <FilterSearch
             onSelect={handleFilterSelect}
-            placeholder="Find Locations Near You"
+            placeholder="Find your Locations Near You"
             searchFields={[
               {
                 entityType: "location",
