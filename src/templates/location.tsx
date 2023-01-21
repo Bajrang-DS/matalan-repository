@@ -22,9 +22,9 @@ import * as React from "react";
 import Banner from "../components/banner";
 import Details from "../components/details";
 import Hours from "../components/hours";
-import List from "../components/list";
+//import List from "../components/list";
 import PageLayout from "../components/page-layout";
-import StaticMap from "../components/static-map";
+//import StaticMap from "../components/static-map";
 import Favicon from "../public/yext-favicon.ico";
 import "../index.css";
 
@@ -33,7 +33,7 @@ import "../index.css";
  */
 export const config: TemplateConfig = {
   stream: {
-    $id: "my-stream-id-1",
+    $id: "location-data",
     // Specifies the exact data that each generated document will contain. This data is passed in
     // directly as props to the default exported function.
     fields: [
@@ -45,9 +45,8 @@ export const config: TemplateConfig = {
       "mainPhone",
       "description",
       "hours",
-      "slug",
-      "geocodedCoordinate",
-      "services",
+      "slug"
+      
     ],
     // Defines the scope of entities that qualify for this stream.
     filter: {
@@ -55,7 +54,7 @@ export const config: TemplateConfig = {
     },
     // The entity language profiles that documents will be generated for.
     localization: {
-      locales: ["en"],
+      locales: ["en_GB"],
       primary: false,
     },
   },
@@ -70,9 +69,7 @@ export const config: TemplateConfig = {
 export const getPath: GetPath<TemplateProps> = ({ document }) => {
   return document.slug
     ? document.slug
-    : `${document.locale}/${document.address.region}/${document.address.city}/${
-        document.address.line1
-      }-${document.id.toString()}`;
+    : `${document.id.toString()}`;
 };
 
 /**
@@ -111,11 +108,11 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
       {
         type: "link",
         attributes: {
-          rel: 'icon',
-          type: 'image/x-icon',
-          href: Favicon
+          rel: "icon",
+          type: "image/x-icon",
+          href: Favicon,
         },
-      }
+      },
     ],
   };
 };
@@ -138,34 +135,26 @@ const Location: Template<TemplateRenderProps> = ({
     _site,
     name,
     address,
-    openTime,
     hours,
     mainPhone,
-    geocodedCoordinate,
-    services,
-    description,
+    description
   } = document;
 
   return (
     <>
-      <PageLayout _site={_site}>
+         <PageLayout _site={_site}>
         <Banner name={name} address={address} />
         <div className="centered-container">
           <div className="section">
             <div className="grid grid-cols-2 gap-x-10 gap-y-10">
               <div className="bg-gray-100 p-2">
                 <Details address={address} phone={mainPhone}></Details>
-                {services && <List list={services}></List>}
+                
               </div>
               <div className="bg-gray-100 p-2">
                 {hours && <Hours title={"Restaurant Hours"} hours={hours} />}
               </div>
-              {geocodedCoordinate && (
-                <StaticMap
-                  latitude={geocodedCoordinate.latitude}
-                  longitude={geocodedCoordinate.longitude}
-                ></StaticMap>
-              )}
+             
               <div className="bg-gray-100 p-2">
                 <div className="text-xl font-semibold">{`About ${name}`}</div>
                 <p className="pt-4">{description}</p>

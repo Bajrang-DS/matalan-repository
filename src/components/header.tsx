@@ -1,6 +1,6 @@
 import * as React from "react";
-import Cta from "../components/cta";
-
+//import Cta from "../components/cta";
+import logo from "../assets/images/logo.png";
 type Link = {
   label: string;
   url: string;
@@ -9,17 +9,38 @@ type Link = {
 const links: Link[] = [
   {
     label: "Home",
-    url: "/",
+    url: "#",
   },
   {
     label: "About",
-    url: "/turtlehead-tacos",
+    url: "#",
+  },
+  {
+    label: "Womens",
+    url: "#",
+  },
+  {
+    label: "Mens",
+    url: "#",
+  },
+  {
+    label: "Girls",
+    url: "#",
+  },
+  {
+    label: "Baby",
+    url: "#",
+  },
+  {
+    label: "contact",
+    url: "#",
   },
 ];
 
+
 const Header = () => {
   const linkDoms = links.map((link) => (
-    <div key={link.label}>
+    <div style={{color:"black"}} key={link.label}>
       <a href={link.url} target="_blank" rel="noreferrer">
         {link.label}
       </a>
@@ -27,14 +48,16 @@ const Header = () => {
   ));
 
   return (
-    <div className="bg-gray-50">
-      <div className="centered-container">
-        <nav className="py-6 flex items-center justify-between">
+    <div style={{background:"white"}} className="bg-gray-50">
+      <div className="alert alert-dismissible text-center cookiealert">
+
+        <nav className="py-4 flex items-center justify-between">
+
           <div className="flex gap-x-4 items-center">
             <img
-              src="https://cdn.fs.brandfolder.com/cache=expiry:604800/deY3VGFpSjC761Abjbfc"
-              width="50"
-              height="50"
+              src={logo}
+              width="200"
+              height="100"
             ></img>
             <div className="flex gap-x-4 text-sm font-semibold text-body">
               {linkDoms}
@@ -42,16 +65,30 @@ const Header = () => {
           </div>
           <div className="space-x-5"></div>
           <div className="flex gap-x-4">
+
+
             <div className=" h-12 pt-4 ">
-              <Cta
+              <div className="numbercom">
+
+                <h1 className="number_col">
+                  <b><span style={{color:"green"}}> UK:</span></b><a style={{color:"black"}} href="tel:(+44)2080901819">(+44) 208 0901819</a>
+               
+                <b><span  style={{color:"green"}}>,  US:</span></b><a style={{color:"black"}} href="tel:(+1)3015639488">(+1) 301 563 9488</a>
+                <b><span  style={{color:"green"}}>, AUS:</span></b><a style={{color:"black"}} href="tel:(+61)0386768288">(+61) 03 8676 8288</a></h1>
+              </div>
+
+              
+
+
+              {/* <Cta
                 buttonText="Order Online"
                 url="#"
                 style="text-white bg-orange shadow-xl"
-              ></Cta>
+              ></Cta> */}
             </div>
           </div>
         </nav>
-      </div>
+      </div><br />
     </div>
   );
 };
