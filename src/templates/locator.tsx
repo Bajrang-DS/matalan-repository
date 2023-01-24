@@ -25,7 +25,7 @@ export const getPath: GetPath<TemplateProps> = () => {
 
 export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = () => {
   return {
-    title: "Turtlehead Tacos Locations",
+    title: "matalan store",
     charset: "UTF-8",
     viewport: "width=device-width, initial-scale=1",
   };
@@ -34,7 +34,7 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = () => {
 const searcher = provideHeadless({
   apiKey: import.meta.env.YEXT_PUBLIC_SEARCH_API_KEY,
   // make sure your experience key matches what you see in the platform        
-  experienceKey: "turtlehead-tacos-locator",
+  experienceKey: "matalan-store",
   locale: "en_GB",
   endpoints: SandboxEndpoints,
   verticalKey: "locations",

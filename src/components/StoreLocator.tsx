@@ -31,34 +31,16 @@ const StoreLocator = (): JSX.Element => {
   useEffect(() => {
     getUserLocation()
       // .then((location) => {
-      //   // searchActions.setStaticFilters([
-      //   //   {
-      //   //     selected: true,
-      //   //     displayName: "Current Location",
-      //   //     filter: {
-      //   //       kind: "fieldValue",
-      //   //       fieldId: "builtin.location",
-      //   //       value: {
-      //   //         lat: location.coords.latitude,
-      //   //         lng: location.coords.longitude,
-      //   //         radius: 40233.6, // equivalent to 25 miles
-      //   //       },
-      //   //       matcher: Matcher.Near,
-      //   //     },
-      //   //   },
-      //   // ]);
-      // })
-      // .catch(() => {
       //   searchActions.setStaticFilters([
       //     {
       //       selected: true,
-      //       displayName: "New York City, New York, NY",
+      //       displayName: "Current Location",
       //       filter: {
       //         kind: "fieldValue",
       //         fieldId: "builtin.location",
       //         value: {
-      //           lat: 40.7128,
-      //           lng: -74.006,
+      //           lat: location.coords.latitude,
+      //           lng: location.coords.longitude,
       //           radius: 40233.6, // equivalent to 25 miles
       //         },
       //         matcher: Matcher.Near,
@@ -66,6 +48,24 @@ const StoreLocator = (): JSX.Element => {
       //     },
       //   ]);
       // })
+      .catch(() => {
+        searchActions.setStaticFilters([
+          {
+            selected: true,
+            displayName: "New York City, New York, NY",
+            filter: {
+              kind: "fieldValue",
+              fieldId: "builtin.location",
+              value: {
+                lat: 40.7128,
+                lng: -74.006,
+                radius: 40233.6, // equivalent to 25 miles
+              },
+              matcher: Matcher.Near,
+            },
+          },
+        ]);
+      })
       .then(() => {
         searchActions.executeVerticalQuery();
         setInitialSearchState("started");

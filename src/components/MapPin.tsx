@@ -4,7 +4,7 @@ import { PinComponent } from "@yext/search-ui-react";
 import { Popup, LngLatLike, Map } from "mapbox-gl";
 import Location, { Coordinate } from "../types/locations";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { GiTacos } from "react-icons/gi";
+import { GiPositionMarker } from "react-icons/gi";
 import { Result } from "@yext/search-headless-react";
 
 const transformToMapboxCoord = (
@@ -64,7 +64,7 @@ const MapPin: PinComponent<Location> = ({
 
   return (
     <button onClick={handleClick}>
-      <GiTacos className="text-orange" size={30} />
+      <GiPositionMarker className="text-orange" size={30} />
     </button>
   );
 };
