@@ -30,24 +30,24 @@ const StoreLocator = (): JSX.Element => {
 
   useEffect(() => {
     getUserLocation()
-      .then((location) => {
-        searchActions.setStaticFilters([
-          {
-            selected: true,
-            displayName: "Current Location",
-            filter: {
-              kind: "fieldValue",
-              fieldId: "builtin.location",
-              value: {
-                lat: location.coords.latitude,
-                lng: location.coords.longitude,
-                radius: 40233.6, // equivalent to 25 miles
-              },
-              matcher: Matcher.Near,
-            },
-          },
-        ]);
-      })
+      // .then((location) => {
+      //   searchActions.setStaticFilters([
+      //     {
+      //       selected: true,
+      //       displayName: "Current Location",
+      //       filter: {
+      //         kind: "fieldValue",
+      //         fieldId: "builtin.location",
+      //         value: {
+      //           lat: location.coords.latitude,
+      //           lng: location.coords.longitude,
+      //           radius: 40233.6, // equivalent to 25 miles
+      //         },
+      //         matcher: Matcher.Near,
+      //       },
+      //     },
+      //   ]);
+      // })
       .catch(() => {
         searchActions.setStaticFilters([
           {

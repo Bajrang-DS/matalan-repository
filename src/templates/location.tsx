@@ -43,7 +43,7 @@ export const config: TemplateConfig = {
       "meta",
       "name",
       "address",
-      "geocodedCoordinate",
+     
       "mainPhone",
       "description",
       "hours",
@@ -137,7 +137,7 @@ const Location: Template<TemplateRenderProps> = ({
     _site,
     name,
     address,
-    geocodedCoordinate,
+    
     hours,
     mainPhone,
     description
@@ -158,12 +158,7 @@ const Location: Template<TemplateRenderProps> = ({
                 {hours && <Hours title={"Restaurant Hours"} hours={hours} />}
               </div>
               <div>
-              {geocodedCoordinate && (
-                <StaticMap
-                  latitude={geocodedCoordinate.latitude}
-                  longitude={geocodedCoordinate.longitude}
-                ></StaticMap>
-              )}
+           
               </div>
              
               <div className="bg-gray-100 p-2">
