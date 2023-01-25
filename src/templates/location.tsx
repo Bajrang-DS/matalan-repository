@@ -17,6 +17,7 @@ import {
   TemplateConfig,
   TemplateProps,
   TemplateRenderProps,
+
 } from "@yext/pages";
 import * as React from "react";
 import Banner from "../components/banner";
@@ -24,7 +25,7 @@ import Details from "../components/details";
 import Hours from "../components/hours";
 //import List from "../components/list";
 import PageLayout from "../components/page-layout";
-//import StaticMap from "../components/static-map";
+import StaticMap from "../components/static-map";
 import Favicon from "../public/yext-favicon.ico";
 import "../index.css";
 
@@ -42,6 +43,7 @@ export const config: TemplateConfig = {
       "meta",
       "name",
       "address",
+      "geocodedCoordinate",
       "mainPhone",
       "description",
       "hours",
@@ -135,6 +137,7 @@ const Location: Template<TemplateRenderProps> = ({
     _site,
     name,
     address,
+    geocodedCoordinate,
     hours,
     mainPhone,
     description
@@ -153,6 +156,14 @@ const Location: Template<TemplateRenderProps> = ({
               </div>
               <div className="bg-gray-100 p-2">
                 {hours && <Hours title={"Restaurant Hours"} hours={hours} />}
+              </div>
+              <div>
+              {geocodedCoordinate && (
+                <StaticMap
+                  latitude={geocodedCoordinate.latitude}
+                  longitude={geocodedCoordinate.longitude}
+                ></StaticMap>
+              )}
               </div>
              
               <div className="bg-gray-100 p-2">
